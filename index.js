@@ -1,4 +1,4 @@
-import import React, { Component } from "react";
+import React, { Component } from "react";
 
 class Login extends Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class Login extends Component {
         this.setState({
             [event.target.name]: event.target.value,
         });
-    },
+    };
 
     handleSubmit = (event) =>
     event.preventDefault();
@@ -64,7 +64,7 @@ class Login extends Component {
                 </div>
 
                 <button type="submit">Log-in</button>
-                    {logged && <loginMessage/>}    
+                    {logged && <LoginMessage/>}    
             </form>
             );
         };
@@ -78,7 +78,7 @@ class Login extends Component {
                 </div>
             );
         }
-    }
+    };
 
 
     class ErrorMessage extends Component {
@@ -91,4 +91,16 @@ class Login extends Component {
             );
         }
     }
-}
+
+    class App extends Component {
+        render() {
+            return(
+                <div>
+                    <Login/>
+                </div>
+            );
+        }
+
+    }
+
+export default App;
