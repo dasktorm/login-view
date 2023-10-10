@@ -19,5 +19,17 @@ class Login extends Component {
     event.preventDefault();
     const {email, password} = this.state;
 
+    if (password === "beway") {
+        this.setState({logged: true});
+    }
+        else {
+            this.setState({logged: false});
+        }
+    };
+
+    render() {
+        const {email, password, logged} = this.state;
+    }
+
     }
 }
