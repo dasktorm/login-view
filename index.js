@@ -64,8 +64,31 @@ class Login extends Component {
                 </div>
 
                 <button type="submit">Log-in</button>
-        )
+                    {logged && <loginMessage/>}    
+            </form>
+            );
+        };
     }
 
+    class LoginMessage extends Component {
+        render() {
+            return(
+                <div>
+                    <h1>Welcome to BeWay Login View</h1>
+                </div>
+            );
+        }
+    }
+
+
+    class ErrorMessage extends Component {
+        render() {
+            return(
+                <div>
+                    <h1>Sorry, this is not correct</h1>
+                    <p>Make sure you're using your valid credentials and try again</p>
+                </div>
+            );
+        }
     }
 }
