@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from "react";
 
+import "./App.css";
+
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const [passwordCorrect, setPasswordCorrect] = useState(null)
-
-
-  // useEffect(() => {
-  //   if (password === "beway") {
-  //     setLoggedIn(true);
-  //   } else {
-  //     setLoggedIn(false);
-  //   }
-  // }, [password]);
-
-
+  const [passwordCorrect, setPasswordCorrect] = useState(null);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -41,14 +32,14 @@ const LoginForm = () => {
     console.log(event.target[2].value);
     event.preventDefault();
     if (event.target[2].value == "beway") {
-      setPasswordCorrect(true)
+      setPasswordCorrect(true);
     }
   };
 
   if (!passwordCorrect) {
     return (
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form_container">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -56,9 +47,9 @@ const LoginForm = () => {
             name="email"
             value={email}
             onChange={handleChange}
+            style={{ margin: 10 }}
           />
-        </div>
-        <div>
+
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -66,9 +57,9 @@ const LoginForm = () => {
             name="username"
             value={username}
             onChange={handleChange}
+            style={{ margin: 10 }}
           />
-        </div>
-        <div>
+
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -76,51 +67,33 @@ const LoginForm = () => {
             name="password"
             value={password}
             onChange={handleChange}
+            style={{ margin: 10 }}
           />
+          <div>
+            <button type="submit" style={{ color: "green" }}>
+              Login
+            </button>
+            {loggedIn && <WelcomeMessage />}
+          </div>
         </div>
-        <button type="submit">Login</button>
-        {loggedIn && <WelcomeMessage />}
       </form>
     );
   } else if (passwordCorrect) {
     return (
-      <div>
-        <h1>Bienvenido a <img src="https://www.beway.org/wp-content/uploads/2022/11/Beway-logo-black.png"/></h1>
+      <div className="circle_container">
+        <img src="https://www.beway.org/wp-content/uploads/2022/11/Beway-logo-black.png" />
+        <h1>Bienvenido a BeWay</h1>
+        <p>¡Es un placer tenerte aquí!</p>
       </div>
-    )
+    );
   } else if (!passwordCorrect && event.target[2].value != "") {
     return (
       <div>
         <h1>Oops, seguro no eres tú</h1>
         <p>Por favor, intenta de nuevo.</p>
       </div>
-    )
+    );
   }
 };
-
-const WelcomeMessage = () => {
-  return (
-    <div>
-      <h1>Bienvenido a BeWay</h1>
-    </div>
-  );
-};
-
-// const ErrorMessage = () => {
-//   return (
-//     <div>
-//       <h1>Oops, seguro no eres tú</h1>
-//       <p>Por favor, intenta de nuevo.</p>
-//     </div>
-//   );
-// };
-
-// const App = () => {
-//   return (
-//     <div>
-//       <LoginForm />
-//     </div>
-//   );
-// };
 
 export default LoginForm;
