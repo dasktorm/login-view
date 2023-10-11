@@ -6,13 +6,18 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
 
-  useEffect(() => {
-    if (password === "beway") {
-      setLoggedIn(true);
-    } else {
-      setLoggedIn(false);
-    }
-  }, [password]);
+  const [passwordCorrect, setPasswordCorrect] = useState(null)
+
+
+  // useEffect(() => {
+  //   if (password === "beway") {
+  //     setLoggedIn(true);
+  //   } else {
+  //     setLoggedIn(false);
+  //   }
+  // }, [password]);
+
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -33,70 +38,89 @@ const LoginForm = () => {
   };
 
   const handleSubmit = (event) => {
+    console.log(event.target[2].value);
     event.preventDefault();
+    if (event.target[2].value == "beway") {
+      setPasswordCorrect(true)
+    }
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
+  if (!passwordCorrect) {
+    return (
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={username}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit">Login</button>
+        {loggedIn && <WelcomeMessage />}
+      </form>
+    );
+  } else if (passwordCorrect) {
+    return (
       <div>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={email}
-          onChange={handleChange}
-        />
+        <h1>Bienvenido a <img src="https://www.beway.org/wp-content/uploads/2022/11/Beway-logo-black.png"/></h1>
       </div>
+    )
+  } else if (!passwordCorrect && event.target[2].value != "") {
+    return (
       <div>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={username}
-          onChange={handleChange}
-        />
+        <h1>Oops, seguro no eres tú</h1>
+        <p>Por favor, intenta de nuevo.</p>
       </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          onChange={handleChange}
-        />
-      </div>
-      <button type="submit">Login</button>
-      {loggedIn && <WelcomeMessage />}
-    </form>
-  );
+    )
+  }
 };
 
 const WelcomeMessage = () => {
   return (
     <div>
-      <h1>Bienvenido a Beway</h1>
+      <h1>Bienvenido a BeWay</h1>
     </div>
   );
 };
 
-const ErrorMessage = () => {
-  return (
-    <div>
-      <h1>Oops, seguro no eres tú</h1>
-      <p>Por favor, intenta de nuevo.</p>
-    </div>
-  );
-};
+// const ErrorMessage = () => {
+//   return (
+//     <div>
+//       <h1>Oops, seguro no eres tú</h1>
+//       <p>Por favor, intenta de nuevo.</p>
+//     </div>
+//   );
+// };
 
-const App = () => {
-  return (
-    <div>
-      <LoginForm />
-    </div>
-  );
-};
+// const App = () => {
+//   return (
+//     <div>
+//       <LoginForm />
+//     </div>
+//   );
+// };
 
-export default App;
+export default LoginForm;
