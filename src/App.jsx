@@ -34,14 +34,12 @@ const LoginForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // Iniciar sesión con los datos del formulario
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="email">Correo electrónico:</label>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
@@ -51,7 +49,7 @@ const LoginForm = () => {
         />
       </div>
       <div>
-        <label htmlFor="username">Nombre de usuario:</label>
+        <label htmlFor="username">Username</label>
         <input
           type="text"
           id="username"
@@ -61,7 +59,7 @@ const LoginForm = () => {
         />
       </div>
       <div>
-        <label htmlFor="password">Contraseña:</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
@@ -70,7 +68,7 @@ const LoginForm = () => {
           onChange={handleChange}
         />
       </div>
-      <button type="submit">Iniciar sesión</button>
+      <button type="submit">Login</button>
       {loggedIn && <WelcomeMessage />}
     </form>
   );
@@ -79,7 +77,16 @@ const LoginForm = () => {
 const WelcomeMessage = () => {
   return (
     <div>
-      <h1>Bienvenido</h1>
+      <h1>Bienvenido a Beway</h1>
+    </div>
+  );
+};
+
+const ErrorMessage = () => {
+  return (
+    <div>
+      <h1>Oops, seguro no eres tú</h1>
+      <p>Por favor, intenta de nuevo.</p>
     </div>
   );
 };
