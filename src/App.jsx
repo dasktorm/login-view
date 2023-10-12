@@ -29,11 +29,16 @@ const LoginForm = () => {
   };
 
   const handleSubmit = (event) => {
-    console.log(event.target[2].value);
+    console.log(event);
+    setUsername(event.target[1].value);
+    console.log(username);
+    setPassword(event.target[2].value);
+    console.log(password);
     event.preventDefault();
     if (event.target[2].value == "beway") {
       setPasswordCorrect(true);
-    }
+    } else { setPasswordCorrect(false) }
+
   };
 
   if (!passwordCorrect) {
@@ -78,15 +83,16 @@ const LoginForm = () => {
         </div>
       </form>
     );
-  } else if (passwordCorrect) {
+  } if (passwordCorrect) {
+    let saludo = `Hola, ${username}. Bienvenido a BeWay`
     return (
       <div className="circle_container">
         <img src="https://www.beway.org/wp-content/uploads/2022/11/Beway-logo-black.png" />
-        <h1>Bienvenido a BeWay</h1>
+        <h1>{saludo}</h1>
         <p>¡Es un placer tenerte aquí!</p>
       </div>
     );
-  } else if (!passwordCorrect && event.target[2].value != "") {
+  } else {
     return (
       <div>
         <h1>Oops, seguro no eres tú</h1>
