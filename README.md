@@ -1,4 +1,12 @@
-# React + Vite
+# Login View
+Login View realizada para el equipo técnico según indicaciones.
+
+**Técnologias/Librerías usadas**
+* React
+* CSS
+* HTML
+* Vite
+* Swal
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
