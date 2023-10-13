@@ -58,6 +58,11 @@ label {
     margin: auto;
     margin-left: 100px;
   }
+
+  p{
+    margin: auto;
+    margin-left: 100px;
+  }
   
   button {
     border-radius: 8px;
