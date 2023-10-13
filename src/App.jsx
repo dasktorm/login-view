@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Swal from 'sweetalert2'
 import "./App.css";
 
 const LoginForm = () => {
@@ -81,8 +82,8 @@ const LoginForm = () => {
               onChange={handleChange}
               style={{ margin: 10 }}
             />
-            <div>
-              <button type="submit" style={{ color: "green" }}>
+            <div className="login_button">
+              <button type="submit">
                 Login
               </button>
               {loggedIn && <WelcomeMessage />}
@@ -92,7 +93,12 @@ const LoginForm = () => {
       </div>
     );
   } else if (passwordCorrect) {
-    let saludo = `Hola, ${username}. Bienvenido a BeWay`;
+    Swal.fire(
+      'Bienvenido',
+      'Credenciales correctas!',
+      'success'
+    )
+    let saludo = `Hola, ${username}. Bienvenido a BeWay!`;
     return (
       <div className="circle_container">
         <img src="https://www.beway.org/wp-content/uploads/2022/11/Beway-logo-black.png" />
@@ -101,9 +107,14 @@ const LoginForm = () => {
       </div>
     );
   } else {
+    Swal.fire(
+      'Error',
+      'Credenciales incorrectas.',
+      'error'
+    )
     return (
       <div>
-        <h1>Oops, seguro no eres tú</h1>
+        <h1>Oops, seguro no eres tú.</h1>
         <p>Contraseña incorrecta, intenta de nuevo.</p>
       </div>
     );
