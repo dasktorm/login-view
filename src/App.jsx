@@ -94,8 +94,8 @@ const LoginForm = () => {
     );
   } else if (passwordCorrect) {
     Swal.fire(
-      'Bienvenido',
-      'Credenciales correctas!',
+      '¡Bienvenido!',
+      'Credenciales correctas.',
       'success'
     )
     let saludo = `Hola, ${username}. Bienvenido a BeWay!`;
