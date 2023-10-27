@@ -105,20 +105,13 @@ const LoginForm = () => {
         <h1>{saludo}</h1>
         <p>¡Es un placer tenerte aquí!</p>
       </div>
+    
     );
-  } else {
-    Swal.fire(
-      'Error',
-      'Credenciales incorrectas.',
-      'error'
-    )
-    return (
-      <div>
-        <h1>Oops, seguro no eres tú.</h1>
-        <p>Contraseña incorrecta, intenta de nuevo.</p>
-      </div>
-    );
-  }
+  } 
+  else {
+    <Error/>
 };
+}
+
 
 export default LoginForm;
