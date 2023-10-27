@@ -110,7 +110,9 @@ const LoginForm = () => {
     );
   } 
   else {
+    return (
     <Error/>
+    )
 };
 }
 
