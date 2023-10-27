@@ -30,6 +30,7 @@ const LoginForm = () => {
 
   const handleSubmit = (event) => {
     console.log(event);
+    console.log("bewaytest", username);
     setUsername(event.target[1].value);
     console.log(username);
     setPassword(event.target[2].value);
